@@ -180,8 +180,12 @@ def delete_entry(filename):
 
 
 
+import os
+
+app.config['USER_FOLDER'] = 'users'
+app.config['SECRET_KEY'] = 'mysecretkey'
+
 if __name__ == '__main__':
-    app.config['USER_FOLDER'] = 'users'
-    app.config['SECRET_KEY'] = 'mysecretkey'
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
