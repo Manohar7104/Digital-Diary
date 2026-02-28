@@ -1,0 +1,109 @@
+<html>
+
+<head>
+  <title>home page</title>
+</head>
+<style>
+  .h1 {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(199, 190, 190);
+    color: black;
+    text-align: center;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: auto;
+
+  }
+
+  .flex-container>div {
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    color: black;
+  }
+
+  div.background {
+
+    border: 2px solid black;
+    width: 22%;
+    height: auto;
+  }
+
+  div.transbox {
+    margin: 30px;
+    border: 1px solid black;
+
+  }
+
+  div.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+  }
+
+  .btn {
+    background-color: DodgerBlue;
+    border: none;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: rgb(140, 240, 243);
+  }
+
+  body {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    background-position-x: center;
+  }
+</style>
+
+<body
+  style="background-image:url('https://img.freepik.com/free-photo/minimalist-business-arrangement-white-background_23-2148488653.jpg?t=st=1717003280~exp=1717006880~hmac=cc742ea692af4734b0b63a1a56a381f116b665718455f7d29c40b54af1d01501&w=826');">
+
+  <h1 class="h1" style="font-size:300%;">My Diary</h1>
+  <form class="entry-form" method="GET" action="{{ url_for('homepage', username=username) }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="flex-container">
+      <div><a href="{{ url_for('homepage',username=username) }}"><button class="btn"><i class="fa fa-home"></i>
+            Home</button></a></div>
+      <div><button class="btn"><a href="{{ url_for('login') }}" style="text-decoration: none;"> Log out</a></button>
+      </div>
+      <div><button class="btn"><a href="{{ url_for('add_entry') }}" style="text-decoration: none;">New
+            entry</a></button></div>
+      <div><button class="btn"><a href="{{ url_for('all_entries') }}" style="text-decoration: none;"> All
+            entries</a></button></div>
+
+    </div>
+    </div>
+    <div class="background">
+      <h2>Your Stories</h2>
+
+
+      {% for title, date in entries %}
+      <div class="transbox">
+        <h3>{{ title }}</h3>
+        <p>{{ date }}</p>
+      </div>
+      {% endfor %}
+
+      <br>
+
+    </div>
+    </div>
+
+
+  </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .item1 {
+      grid-area: header;
+    }
+
+    .item2 {
+      grid-area: menu;
+    }
+
+    .item3 {
+      grid-area: main;
+    }
+
+    .item4 {
+      grid-area: right;
+    }
+
+    .item5 {
+      grid-area: footer;
+    }
+
+    .grid-container {
+      display: grid;
+
+      grid-template-rows: auto 430px auto;
+      grid-template-areas:
+        'header header header header header header header header'
+        'menu menu menu menu main main right right'
+        'footer footer footer footer footer footer footer footer';
+      gap: 0px;
+      background-color: rgba(170, 156, 156, 0.8);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 21px;
+    }
+
+    .grid-container>.item3 {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 21px 0;
+      margin-left: 8px;
+      font-size: 30px;
+      border: 1px solid black;
+    }
+
+    .item2,
+    .item4,
+    .item5 {
+
+      text-align: right;
+      padding: 21px 0;
+
+      font-size: 23px;
+    }
+
+    .item1 {
+      color: turquoise;
+
+      text-align: center;
+      padding: 21px 0;
+
+      font-size: 28px;
+    }
+
+    .button {
+      background-color: green;
+      border: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    .button1 {
+      background-color: blueviolet;
+      border: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    .flashes {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .flashes li {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 10px;
+      border: 1px solid #f5c6cb;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body
+  style="background-image: url('https://images.unsplash.com/opengraph/1x1.png?blend=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1574629173115-01ba37282238%3Fblend%3D000000%26blend-alpha%3D10%26blend-mode%3Dnormal%26crop%3Dfaces%252Cedges%26h%3D630%26mark%3Dhttps%253A%252F%252Fimages.unsplash.com%252Fopengraph%252Fsearch-input.png%253Fh%253D84%2526txt%253Ddiary%2526txt-align%253Dmiddle%25252Cleft%2526txt-clip%253Dellipsis%2526txt-color%253D000000%2526txt-pad%253D80%2526txt-size%253D40%2526txt-width%253D660%2526w%253D750%2526auto%253Dformat%2526fit%253Dcrop%2526q%253D60%26mark-align%3Dmiddle%252Ccenter%26mark-w%3D750%26w%3D1200%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixid%3DM3wxMjA3fDB8MXxzZWFyY2h8M3x8ZGlhcnl8ZW58MHx8fHwxNzA5NzgxMzY5fDA%26ixlib%3Drb-4.0.3&blend-w=1&h=630&mark=https%3A%2F%2Fimages.unsplash.com%2Fopengraph%2Flogo.png&mark-align=top%2Cleft&mark-pad=50&mark-w=64&w=1200&auto=format&fit=crop&q=60'); background-repeat: no-repeat;  background-size :cover">
+
+
+
+  <div class="grid-container">
+    <div class="item1">Join us with your e-diary</div>
+    <div class="item2">
+
+      <h3 style="color:rgb(243, 139, 90);"> <u>Have an account</h3></u>
+
+      <p style="color:whitesmoke;">The Right Path is Start from here</p>
+      <button class="button button1" type="sign up" value="sign up" size="100" background-color="green"> <a
+          href="{{ url_for('login') }}">Login</a></button>
+    </div>
+    <div class="item3">
+      <center>
+
+        <h1>
+          SIGN UP
+        </h1>
+        <form method="POST" action="{{ url_for('register') }}">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
+          <input placeholder="First Name" name="First Name" size="25" />
+
+          <br>
+
+          <input placeholder="Last Name" name="Last Name" size="25" />
+
+          <br>
+
+          <input placeholder="Date of Birth[yy-mm-dd]" id="date" name="dob" size="25">
+
+          <br>
+          <input placeholder="User Id" id="username" name="username" size="25" />
+          <br>
+          <input type="password" placeholder="password" id="password" name="password" size="25" />
+          <br>
+
+
+          <button class="button" type="log in" value="login" size="25">submit</button>
+      </center>
+    </div>
+    <div class="item4"></div>
+    <div class="item5"></div>
+  </div>
+
+</body>
+
+</html>

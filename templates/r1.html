@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .item1 {
+      grid-area: header;
+    }
+
+    .item2 {
+      grid-area: menu;
+    }
+
+    .item3 {
+      grid-area: main;
+    }
+
+    .item4 {
+      grid-area: right;
+    }
+
+    .item5 {
+      grid-area: footer;
+    }
+
+    .grid-container {
+      display: grid;
+
+      grid-template-rows: auto 430px auto;
+      grid-template-areas:
+        'header header header header header header header header'
+        'menu menu menu menu menu main main right'
+        'footer footer footer footer footer footer footer footer';
+      gap: 0px;
+      background-color: rgba(170, 156, 156, 0.8);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 21px;
+    }
+
+    .grid-container>.item3 {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 21px 0;
+      margin-left: 8px;
+      font-size: 30px;
+      border: 1px solid black;
+    }
+
+    .item2,
+    .item4,
+    .item5 {
+
+      text-align: right;
+      padding: 21px 0;
+
+      font-size: 23px;
+    }
+
+    .item1 {
+      color: turquoise;
+
+      text-align: center;
+      padding: 21px 0;
+
+      font-size: 28px;
+    }
+
+    .button {
+      background-color: green;
+      /* Green */
+      border: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    .button1 {
+      background-color: blueviolet;
+      /* Green */
+      border: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    .flashes {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .flashes li {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 10px;
+      border: 1px solid #f5c6cb;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body
+  style="background-image: url('https://img.freepik.com/free-photo/top-view-desk-with-notebooks-copy-space_23-2148415058.jpg?size=626&ext=jpg&ga=GA1.1.1917347101.1716996669&semt=ais_user'); background-repeat: no-repeat;  background-size :cover">
+
+
+
+  <div class="grid-container">
+    <div class="item1">Join us with your e-diary</div>
+    <div class="item2">
+
+      <h3 style="color:rgb(243, 139, 90);"> <u>Create an account</h3></u>
+
+      <p style="color:whitesmoke;">Are you new ? <br> Please sign up to create an account </p>
+      <button class="button button1" type="sign up" value="sign up" size="100" background-color="green"> <a
+          href="{{ url_for('register') }}">Sign-Up</a></button>
+    </div>
+    <div class="item3">
+      <center>
+
+        <h1>
+          LOG IN
+        </h1>
+        <form method="POST" action="{{ url_for('login') }}">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
+          <input placeholder="user-id" type="text" name="username" id="username" required>
+
+          <br>
+
+          <input placeholder="password" type="password" name="password" id="password" size="25" required>
+
+          <br>
+
+
+          <button class="button" type="log in" value="login" size="25"> Log in</button>
+      </center>
+    </div>
+    <div class="item4"></div>
+    <div class="item5"></div>
+  </div>
+
+</body>
+
+</html>
